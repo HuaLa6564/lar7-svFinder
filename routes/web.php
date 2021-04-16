@@ -46,7 +46,6 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('blogs','BlogController');
     Route::resource('studs','StudController');
-    
 });
 
 Route::prefix('supervisor')->group(function () {
@@ -92,5 +91,4 @@ Route::prefix('lecturer')->group(function () {
     Route::get('/password/reset/{token}', 'Auth\LecturerResetPasswordController@showResetForm')->name('lecturer.password.reset');
     Route::post('/password/reset', 'Auth\LecturerResetPasswordController@reset')->name('lecturer.password.update');
 });
-
 
