@@ -62,6 +62,11 @@ return [
             'provider' => 'lecturers',
         ],
 
+        'stud' => [
+            'driver' => 'session',
+            'provider' => 'studs',
+        ],
+
     ],
 
     /*
@@ -106,6 +111,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Lecturer::class,
         ],
+        'studs' => [
+            'driver' => 'eloquent',
+            'model' => App\Stud::class,
+        ],
     ],
 
     /*
@@ -147,6 +156,13 @@ return [
 
         'lecturers' => [
             'provider' => 'lecturers',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+    
+        'studs' => [
+            'provider' => 'studs',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

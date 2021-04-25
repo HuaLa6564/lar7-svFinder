@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 </head>
-	<title>Home</title>
+	<title>SFAS</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{{ url('/css/w3.css') }}" />
 	<link rel="stylesheet" type="text/css" href="{{ url('/css/homecss.css') }}" />
@@ -34,7 +34,7 @@
 			
 			<td>
 				<div class="container">
-                <a href="{{ url('/login')}}">	
+				<a href="{{ url('/stud') }}">
 				<button class="button button2">STUDENT</button>
 				{{-- <img src="blockB.png" alt="Avatar" class="image" width="50" height="50"  style="border-radius:15%"> --}}
 				<div class="overlay">Student</div>

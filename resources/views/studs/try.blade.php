@@ -7,33 +7,30 @@
                 <h2>Check all Students</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('studs.create') }}"> Add New Students</a>
+                <a class="btn btn-success" href="{{ url('/stud/register') }}"> Add New Students</a>
             </div>
+           
         </div>
     </div>
    
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
-   
+
     <table class="table table-bordered">
         <tr>
             <th>No</th>
             <th>Student ID</th>
             <th>Email</th>
-            <th>Password</th>
+            {{-- <th>Password</th> --}}
             <th>Name</th>
             <th>Program Code</th>
             <th width="250px">Action</th>
+            
         </tr>
         @foreach ($studs as $stud)
         <tr>
             <td>{{ ++$i }}</td>
             <td>{{ $stud->stud_id }}</td>
             <td>{{ $stud->email }}</td>
-            <td>{{ $stud->password }}</td>
+            {{-- <td>{{ $stud->password }}</td> --}}
             <td>{{ $stud->stud_name }}</td>
             <td>{{ $stud->prog_code }}</td>
             <td>
@@ -51,8 +48,6 @@
             </td>
         </tr>
         @endforeach
-    </table>
-  
-    {!! $studs->links() !!}
+        </table>
       
 @endsection

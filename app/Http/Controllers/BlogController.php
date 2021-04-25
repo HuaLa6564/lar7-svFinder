@@ -93,6 +93,7 @@ class BlogController extends Controller
                         ->with('success','Updated successfully');
     }
   
+  
     /**
      * Remove the specified resource from storage.
      *

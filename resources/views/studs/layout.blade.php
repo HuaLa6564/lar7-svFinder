@@ -16,19 +16,19 @@
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 	<link href="{{ asset('css/w3.css') }}" rel="stylesheet">
 	<style>
 		body {
 		  margin: 0;
 		  font-family: Arial, Helvetica, sans-serif;
-      background-color: lavender;
+      	background-color: lavender;
 		}
-    body {margin:0;}
+   		 body {margin:0;}
 
 		.topnav {
 		  overflow: hidden;
@@ -58,7 +58,7 @@
 		.container {
 			border-radius: 5px;
 			background-color: #f2f2f2;
-			padding: 100px;
+			padding: 30px;
 		}
 		
 		.material-icons {vertical-align:-14%}
@@ -72,26 +72,26 @@
 			font-size:17px;
 		}
 
-    table {
-  		border-collapse: collapse;
-  		width: 100%;
-	 
-    }
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		
+		}
 
-    th, td {
-    text-align: center;
-    padding: 8px;
-    }
+		th, td {
+		text-align: center;
+		padding: 8px;
+		}
 
-    tr:nth-child(odd){background-color: white}
+		tr:nth-child(odd){background-color: white}
 
-    th {
-    background-color: #87CEFA;
-    color: white;
-    }
-		</style>
-    
-  </head>
+		th {
+		background-color: #87CEFA;
+		color: white;
+		}
+			</style>
+		
+	</head>
   <body>
         <div class="topnav">
             <a href="{{ url('/admin')}}"><i class="fa fa-male">&nbsp; SFAS</i></a>	

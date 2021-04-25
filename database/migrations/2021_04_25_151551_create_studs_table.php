@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStudTable extends Migration
+class CreateStudsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateStudTable extends Migration
      */
     public function up()
     {
+        // if not migrated  run >>php artisan migrate:refresh
+        //                  then >> php artisan migrate:status
         Schema::create('studs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('stud_id');
-            $table->string('stu_email');
-            $table->string('pw');
+            $table->string('stud_email');
             $table->text('stud_name');
             $table->string('prog_code');
+            $table->string('pw');
             $table->timestamps();
         });
     }

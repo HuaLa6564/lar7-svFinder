@@ -1,13 +1,13 @@
-@extends('blogs.layout').
+@extends('layouts.stud-app')
  
 @section('content')
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Check all Supervisors</h2>
+                <h2>Check all Lecturers</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('blogs.create') }}"> Add New Supervisor</a>
+                <a class="btn btn-success" href="{{ route('blogs.create') }}"> Add New Lecturer</a>
             </div>
         </div>
     </div>
@@ -16,7 +16,7 @@
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
-    @endif
+    @endif --}}
    
     <table class="table table-bordered">
         <tr>
@@ -25,6 +25,7 @@
             <th>Name</th>
             <th>Program Code</th>
             <th width="250px">Action</th>
+            <th width="250px">Status</th>
         </tr>
         @foreach ($blogs as $blog)
         <tr>
@@ -33,17 +34,19 @@
             <td>{{ $blog->staff_name }}</td>
             <td>{{ $blog->prog_code }}</td>
             <td>
-                <form action="{{ route('blogs.destroy',$blog->id) }}" method="POST">
+                {{-- <form action="{{ route('blogs.destroy',$blog->id) }}" method="POST"> --}}
    
-                    <a class="btn btn-info" href="{{ route('blogs.show',$blog->id) }}">Show</a>
+                    {{-- <a class="btn btn-info" href="{{ route('blogs.show',$blog->id) }}">Show</a> --}}
     
                     <a class="btn btn-primary" href="{{ route('blogs.edit',$blog->id) }}">Edit</a>
+
+                    <a class="btn btn-info" button type="button" href="{{  url('/create') }}">Apply</a></button>
    
-                    @csrf
-                    @method('DELETE')
+                    {{-- @csrf --}}
+                    {{-- @method('DELETE') --}}
       
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
+                    {{-- <button type="submit" class="btn btn-danger">Delete</button> --}}
+                {{-- </form> --}}
             </td>
         </tr>
         @endforeach

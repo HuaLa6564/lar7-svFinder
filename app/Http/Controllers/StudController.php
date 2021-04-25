@@ -1,115 +1,68 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Stud;
+use App\Blog;
 use Illuminate\Http\Request;
 
 class StudController extends Controller
 {
-    /**
-     * Display a listing of the resource.
+    
+    //
+    //
+       /**
+     * Create a new controller instance.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:stud');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        $studs = Stud::latest()->paginate(5);
+        $blogs = Blog::latest()->paginate(5);
   
-        return view('studs.index',compact('studs'))
+        return view('blogs.ide',compact('blogs'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
+        // return view('stud');
     }
+
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'classNo' => 'required',
+    //         'name' => 'required',
+    //         'id' => 'required',
+    //     ]);
+  
+    //     Blog::create($request->all());
    
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    //     return redirect()->route('blogs.ide')
+    //                     ->with('success','Created successfully.');
+    // }
+    public function edit(Blog $blog)
     {
-        //
-        return view('studs.create');
+        return view('blogs.editStud',compact('blogs'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function update(Request $request, Blog $blog)
     {
-        //
         $request->validate([
-            'stud_id' => 'required',
-            'stud_name' => 'required',
+            'staff_id' => 'required',
+            'staff_name' => 'required',
             'prog_code' => 'required',
         ]);
   
-        Stud::create($request->all());
-   
-        return redirect()->route('studs.index')
-                        ->with('success','Created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Stud  $stud
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Stud $stud)
-    {
-        return view('studs.show',compact('stud'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Stud  $stud
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Stud $stud)
-    {
-        //
-        return view('studs.edit',compact('stud'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Stud  $stud
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Stud $stud)
-    {
-        //
-        $request->validate([
-            'stud_id' => 'required',
-            'stud_name' => 'required',
-            'prog_code' => 'required',
-        ]);
+        $blog->update($request->all());
   
-        $stud->update($request->all());
-  
-        return redirect()->route('studs.index')
+        return redirect()->route('blogs.ide')
                         ->with('success','Updated successfully');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Stud  $stud
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Stud $stud)
-    {
-        //
-        $stud->delete();
   
-        return redirect()->route('studs.index')
-                        ->with('success','Deleted successfully');
-    }
 }

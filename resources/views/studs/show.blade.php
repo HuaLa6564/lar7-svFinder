@@ -21,13 +21,13 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Student Email:</strong>
-                {{ $stud->stu_email }}
+                {{ $stud->email }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Password:</strong>
-                {{ $stud->pw }}
+                {{ $stud->password }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">

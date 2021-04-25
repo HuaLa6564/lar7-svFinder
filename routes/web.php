@@ -2,22 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/create', function () {
+    return view('create');
+});
+Route::get('/list', function () {
+    return view('blogs.ide');
+});
 
+Route::get("/list", [StudController::class, 'index'])->name("create");
+Route::post("/list", [StudController::class, 'store'])->name("blogs.ide");
 Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 //custom logout for user so that all session may not be destroyed
@@ -26,6 +24,7 @@ Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logou
 Route::prefix('admin')->group(function () {
     //Dashboard route
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
+    
     
     // Login routes
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
@@ -38,6 +37,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/register', 'Auth\AdminRegisterController@showRegistrationForm')->name('admin.register');
     Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register.submit');
 
+    Route::get('/register', 'Auth\StuRegisterController@showRegistrationForm')->name('stu.register');
+    Route::post('/register', 'Auth\StuRegisterController@register')->name('stu.register.submit');
+
     // Password reset routes
     Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
     Route::post('/password/email', 'Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
@@ -45,7 +47,15 @@ Route::prefix('admin')->group(function () {
     Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset')->name('admin.password.update');
 
     Route::resource('blogs','BlogController');
-    Route::resource('studs','StudController');
+    // Route::resource('studs','StudController');
+    Route::get('/try', 'TryController@index');
+    Route::get('/create', 'CreateController@index');
+    Route::post('/create', 'CreateController@index');
+    Route::resource('stu','StuController');
+    // Route::get('/try', 'TryController@create');
+    // Route::get('/studs', 'StudController@index');
+
+
 });
 
 Route::prefix('supervisor')->group(function () {
@@ -90,5 +100,32 @@ Route::prefix('lecturer')->group(function () {
     Route::post('/password/email', 'Auth\LecturerForgotPasswordController@sendResetLinkEmail')->name('lecturer.password.email');
     Route::get('/password/reset/{token}', 'Auth\LecturerResetPasswordController@showResetForm')->name('lecturer.password.reset');
     Route::post('/password/reset', 'Auth\LecturerResetPasswordController@reset')->name('lecturer.password.update');
+});
+
+
+Route::prefix('stud')->group(function () {
+    //Dashboard route
+    Route::get('/', 'StudController@index')->name('stud.dashboard');
+    
+    // Login routes
+    Route::get('/login', 'Auth\StudLoginController@showLoginForm')->name('stud.login');
+    Route::post('/login', 'Auth\StudLoginController@login')->name('stud.login.submit');
+
+    // Logout route
+    Route::post('/logout', 'Auth\StudLoginController@logout')->name('stud.logout');
+
+    // Register routes
+    Route::get('/register', 'Auth\StudRegisterController@showRegistrationForm')->name('stud.register');
+    Route::post('/register', 'Auth\StudRegisterController@register')->name('stud.register.submit');
+
+    // Password reset routes
+    Route::get('/password/reset', 'Auth\StudForgotPasswordController@showLinkRequestForm')->name('stud.password.request');
+    Route::post('/password/email', 'Auth\StudForgotPasswordController@sendResetLinkEmail')->name('stud.password.email');
+    Route::get('/password/reset/{token}', 'Auth\StudResetPasswordController@showResetForm')->name('stud.password.reset');
+    Route::post('/password/reset', 'Auth\StudResetPasswordController@reset')->name('stud.password.update');
+
+    Route::resource('studs','StudController');
+    Route::get('/create', 'CreateController@index');
+    Route::post('/create', 'CreateController@index');
 });
 

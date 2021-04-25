@@ -37,13 +37,13 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Student Email:</strong>
-                    <input type="string" name="stu_email" value="{{ $stud->stu_email }}" class="form-control" placeholder="Student Email">
+                    <input type="string" name="email" value="{{ $stud->email }}" class="form-control" placeholder="Student Email">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Password:</strong>
-                    <input type="string" name="pw" value="{{ $stud->pw }}" class="form-control" placeholder="Password">
+                    <input type="string" name="password" value="{{ $stud->password }}" class="form-control" placeholder="Password">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
